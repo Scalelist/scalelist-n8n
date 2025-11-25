@@ -78,7 +78,7 @@ export class Scalelist implements INodeType {
         const companyDomain = this.getNodeParameter('company_domain', i, '') as string;
         const apiKey = (await this.getCredentials('ScalelistApi')).apiKey as string;
 
-        const url = new URL(SCALELIST_API_URL,'/api/ext/finder/email');
+        const url = new URL('/api/ext/finder/email',SCALELIST_API_URL);
         url.searchParams.append('x_api_key', apiKey);
         url.searchParams.append('first_name', firstName);
         url.searchParams.append('last_name', lastName);

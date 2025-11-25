@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-scalelist",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "index.ts",
   "homepage": "https://scalelist.com",
   "scripts": {

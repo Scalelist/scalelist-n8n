@@ -73,7 +73,7 @@ class Scalelist {
                 const companyName = this.getNodeParameter('company_name', i, '');
                 const companyDomain = this.getNodeParameter('company_domain', i, '');
                 const apiKey = (await this.getCredentials('ScalelistApi')).apiKey;
-                const url = new URL(config_1.SCALELIST_API_URL, '/api/ext/finder/email');
+                const url = new URL('/api/ext/finder/email', config_1.SCALELIST_API_URL);
                 url.searchParams.append('x_api_key', apiKey);
                 url.searchParams.append('first_name', firstName);
                 url.searchParams.append('last_name', lastName);

@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-scalelist",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": [
+		"Sales",
+		"scalelist"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://app.scalelist.com/app/api-key"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://intercom.help/scalelist/en/collections/12728118-general"
+			}
+		]
+	}
+}

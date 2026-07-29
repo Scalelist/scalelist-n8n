@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-scalelist",
-    "version": "1.0.21",
+    "version": "1.0.22",
     "main": "index.ts",
     "homepage": "https://scalelist.com",
     "scripts": {
@@ -48,5 +48,9 @@
     },
     "files": [
         "dist"
-    ]
+    ],
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    }
 }

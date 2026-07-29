@@ -94,11 +94,11 @@ class Scalelist {
                         status: response.status,
                     },
                 };
-                returnData.push({ json: obj });
+                returnData.push({ json: obj, pairedItem: { item: i } });
             }
             catch (error) {
                 if (this.continueOnFail()) {
-                    returnData.push({ json: { error: error.message } });
+                    returnData.push({ json: { error: error.message }, pairedItem: { item: i } });
                 }
                 else {
                     throw new n8n_workflow_1.NodeOperationError(this.getNode(), error, { itemIndex: i });

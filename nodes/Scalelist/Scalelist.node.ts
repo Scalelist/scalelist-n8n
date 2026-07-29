@@ -102,10 +102,10 @@ export class Scalelist implements INodeType {
           },
         };
 
-        returnData.push({ json: obj });
+        returnData.push({ json: obj, pairedItem: { item: i } });
       } catch (error) {
         if (this.continueOnFail()) {
-          returnData.push({ json: { error: error.message } });
+          returnData.push({ json: { error: error.message }, pairedItem: { item: i } });
         } else {
           throw new NodeOperationError(this.getNode(), error, { itemIndex: i });
         }

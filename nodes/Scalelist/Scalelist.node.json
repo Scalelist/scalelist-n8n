@@ -1,10 +1,9 @@
 {
-	"node": "n8n-nodes-scalelist",
+	"node": "n8n-nodes-scalelist.scalelist",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
-		"Sales",
-		"scalelist"
+		"Sales"
 	],
 	"resources": {
 		"credentialDocumentation": [

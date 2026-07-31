@@ -15,7 +15,8 @@ export class Scalelist implements INodeType {
     name: 'scalelist',
     icon: { light: 'file:../../icons/logo.svg', dark: 'file:../../icons/logo_dark.svg' },
     group: ['input'],
-    description: 'Scalelist',
+    description: 'Find professional email addresses using the Scalelist API',
+    subtitle: '={{$parameter["first_name"] + " " + $parameter["last_name"]}}',
     defaults: {
       name: 'Scalelist',
     },
@@ -23,7 +24,7 @@ export class Scalelist implements INodeType {
     outputs: [NodeConnectionTypes.Main],
     credentials: [
       {
-        name: 'ScalelistApi',
+        name: 'scalelistApi',
         required: true
       }
     ],
@@ -76,22 +77,23 @@ export class Scalelist implements INodeType {
         const lastName = this.getNodeParameter('last_name', i, '') as string;
         const companyName = this.getNodeParameter('company_name', i, '') as string;
         const companyDomain = this.getNodeParameter('company_domain', i, '') as string;
-        const apiKey = (await this.getCredentials('ScalelistApi')).apiKey as string;
 
-        const url = new URL('/api/ext/finder/email',SCALELIST_API_URL);
-        url.searchParams.append('x_api_key', apiKey);
-        url.searchParams.append('first_name', firstName);
-        url.searchParams.append('last_name', lastName);
+        const qs: Record<string, string> = {
+          first_name: firstName,
+          last_name: lastName,
+        };
         if (companyName) {
-          url.searchParams.append('company_name', companyName);
+          qs.company_name = companyName;
         }
         if (companyDomain) {
-          url.searchParams.append('company_website', companyDomain);
+          qs.company_website = companyDomain;
         }
 
-        const response = await this.helpers.httpRequest({
-          url: url.toString(),
+        const response = await this.helpers.httpRequestWithAuthentication.call(this, 'scalelistApi', {
+          baseURL: SCALELIST_API_URL,
+          url: '/api/ext/finder/email',
           method: 'GET',
+          qs,
         });
         // Example: simulate sending to your API
         const obj = {

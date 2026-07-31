@@ -7,10 +7,8 @@ import {
 } from 'n8n-workflow';
 import { SCALELIST_API_URL } from '../config'
 export class ScalelistApi implements ICredentialType {
-  name = 'ScalelistApi';
+  name = 'scalelistApi';
   displayName = 'Scalelist API Key API';
-  // Uses the link to this tutorial as an example
-  // Replace with your own docs links when building your own nodes
   documentationUrl = 'https://app.scalelist.com/app/api-key';
 
   icon: Icon = { light: 'file:../icons/logo.svg', dark: 'file:../icons/logo_dark.svg' };
@@ -28,8 +26,8 @@ export class ScalelistApi implements ICredentialType {
   authenticate: IAuthenticateGeneric = {
     type: 'generic',
     properties: {
-      qs: {
-        'x_api_key': '={{$credentials.apiKey}}'
+      headers: {
+        'X-API-Key': '={{$credentials.apiKey}}'
       }
     },
   };
